@@ -1,0 +1,23 @@
+*only do this once*
+# install virtual environment tool
+python3 -m pip install virtualenv
+
+*only do this once*
+# create a virtual environment 
+python3 -m venv venv
+
+# activate virtual environment
+mac / linux:
+source venv/bin/activate
+
+windows:
+venv\Scripts\activate
+
+run server(vertu environment has to be on):
+python server.py
+
+# deactivate
+deactivate
+
+to do
+#for db update config file

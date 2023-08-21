@@ -1,5 +1,5 @@
-#import pymongo
-#import certifi
+import pymongo
+import certifi
 
 
 me = { 
@@ -15,4 +15,5 @@ me = {
 }
 # database config
 con_str ="mongodb+srv://shanep:XxLl2024@cluster0.oyytphk.mongodb.net/?retryWrites=true&w=majority"
-#client = pymongo.MongoClient(con_str, tlsclFile=certifi.where())
+client = pymongo.MongoClient(con_str, tlsCAFile=certifi.where())
+db = client.get_database("server")

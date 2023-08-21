@@ -1,9 +1,8 @@
-from flask import Flask, request
-from config import me
+from flask import Flask, request, abort
+from config import me, db
 import json
 
 app = Flask("server")
-
 
 @app.get("/")
 def home():
@@ -12,7 +11,6 @@ def home():
 @app.get("/test")
 def test():
     return "This is a test page"
-
 
 #get /about to show your name
 
@@ -53,19 +51,22 @@ def fix_id(record):
 @app.get("/api/products")
 def get_products():
     products = []
+    
     return json.dumps(products)
 
-# @app.post("/api/products")
-# def save_product():
-#     product = request.get_json()
+
+@app.post("/api/products")
+def save_product():
+    product = request.get_json()
     
-#     db.products.insert_one(product)
-    
-#     print(product)
-    
-#     return json.dumps(fix_id(product))
+    db.products.insert_one(product)
+
+    print(product)
+    return json.dumps(fix_id(product))
 
 
 #start the server
 app.run(debug=True)
+
+
 
